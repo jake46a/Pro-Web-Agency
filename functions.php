@@ -87,7 +87,7 @@ register_sidebar( array(
 'id' => 'footersidebar1',
 'description' => 'Appears in the footer area',
 'before_widget' => '<div class="card-header">',
-'after_widget' => '</p></div>',
+'after_widget' => '</p></div><div class="card-footer"></div>',
 'before_title' => '<h3 class="card-title">',
 'after_title' => '</h3></div><div class="card-body"<p class="card-text">',
 ) );
@@ -97,7 +97,7 @@ register_sidebar( array(
 'id' => 'footersidebar2',
 'description' => 'Appears in the footer area',
 'before_widget' => '<div class="card-header">',
-'after_widget' => '</p></div>',
+'after_widget' => '</p></div><div class="card-footer"></div>',
 'before_title' => '<h3 class="card-title">',
 'after_title' => '</h3></div><div class="card-body"<p class="card-text">',
 ) );
