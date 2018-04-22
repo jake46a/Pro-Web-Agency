@@ -1,0 +1,24 @@
+{% block header %}
+  <nav class="navbar navbar-dark bg-primary" role="navigation">
+    <div class="container">
+      {% if theme.theme_mod('pwasite_logo') %}
+        <a class="navbar-brand" href="{{ site.url }}">
+          <img src="{{ theme.theme_mod('pwasite_logo')}}" alt="{{site.name}}">
+        </a>
+      {% else %}
+        <a class="navbar-brand" href="{{site.url}}" rel="home">{{site.name}}</a>
+      {% endif %}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% include "menu.twig" with {
+          'menu' : menu.get_items
+        } %}
+      </div>
+      {# end navbar#}
+    </div>
+    {# end container #}
+  </nav>
+{% endblock %}

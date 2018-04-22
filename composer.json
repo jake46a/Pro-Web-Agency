@@ -1,0 +1,30 @@
+{
+  "name": "Wpa THeme",
+  "description": "Starter theme to build a Timber theme",
+  "type":"wordpress-theme",
+  "minimum-stability" : "stable",
+  "authors": [
+      {
+          "name": "Jake",
+          "email": "jake@gmail.com"
+      }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "extra": {
+  	"installer-paths": {
+      "../../plugins/{$name}/": [
+        "wpackagist-plugin/*",
+        "type:wordpress-plugin"
+      ]
+  	}
+	},
+  "require": {
+    "timber/timber": "^1.7",
+    "twbs/bootstrap": "4.1.0"
+  }
+}

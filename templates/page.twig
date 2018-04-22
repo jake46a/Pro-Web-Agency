@@ -1,0 +1,50 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="content-wrapper">
+    <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+      <section class="article-content">
+        {% if fn('is_front_page') %}
+          <!-- Leave this blank so there's no page title on homepage -->
+        {% else %}
+          <h1 class="article-h1">{{post.title}}</h1>
+          <div class="article-body">
+          {% endif %}
+          {% if post.enable == 1 %}
+            <div class="card mt-2 ">
+              <center>
+                <h4 class="card-title card-header bg-primary text-white mb-0">{{ post.top_main_full_width_title }}</h4>
+              </center>
+              <div class="card-body ">
+                <div class="card-text">{{ post.top_main_content }}</div>
+              </div>
+              <div class="card-footer"></div>
+            </div>
+            <div class="card-deck mb-3 mt-3">
+              <div class="card ">
+                <center>
+                  <h4 class="card-title card-header bg-primary text-white mb-0">{{ post.call1_to_action_title }}</h4>
+                </center>
+              <div class="card-body ">
+                <div class="card-text">{{ post.call1_to_action }}</div>
+              </div>
+              <div class="card-footer"></div>
+            </div>
+            <div class="card ">
+              <center>
+                <h4 class="card-title card-header bg-primary text-white mb-0">{{ post.call2_to_action_title }}</h4>
+              </center>
+            <div class="card-body ">
+              <div class="card-text">{{ post.call2_to_action }}</div>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+        </div>
+      {% endif %}
+      {{post.content}}
+    </div>
+  </section>
+</article>
+</div>
+<!-- /content-wrapper -->
+{% endblock %}

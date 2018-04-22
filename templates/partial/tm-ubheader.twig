@@ -1,0 +1,23 @@
+{% block thememodsubheader %}
+{% if function('is_front_page')and not theme.theme_mod('header_banner_visibility') %}
+<div class="card bg-primary text-white mt-2">
+  {% if theme.theme_mod('header_image', 'pwasite') %}
+    <img class="card-img" src="{{ theme.theme_mod('header_image')}}" alt="{{ theme.theme_mod('header_banner_title_setting')}}">
+  {% endif %}
+  <h1 class="card-title card-header text-center">
+      {% if theme.theme_mod('header_banner_title_setting') %}
+          {{ theme.theme_mod('header_banner_title_setting')}}
+        {% else %}
+          {{ 'Wordpress + Bootstrap4 + Timber' }}
+      {% endif %}
+  </h1>
+    <h4 class="card-text text-center mb-4 pt-4">
+      {% if theme.theme_mod('header_banner_tagline_setting') %}
+            {{ theme.theme_mod('header_banner_tagline_setting')}}
+          {% else %}
+            {{ 'To customize the contents of this header banner and other elements of your site, go to Dashboard > Appearance > Customize' }}
+          {% endif %}</h4>
+  </div>
+{% endif %}
+
+{% endblock %}

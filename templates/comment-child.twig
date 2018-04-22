@@ -1,0 +1,43 @@
+{% if comment.children %}
+  <li id="comment-{{comment.ID}}" {{ fn('comment_class', 'parent' , comment.id)}}>
+  {% else %}
+    <li id="comment-{{comment.ID}}" {{ fn('comment_class', class , comment.id)}}>
+    {% endif %}
+    <article id="div-comment-{{comment.ID}}" class="comment-body media mb-4 mt-4">
+      <img class="pull-left p-2" src="{{cmt.avatar(36)}}"></a>
+    <div class="media-body">
+      <div class="media-body-wrap card">
+        <div class="card-header">
+          <h5 class="mt-0">
+            <cite class="fn">{{comment.author.name}}</cite>
+            <span class="says">thinks:</span>
+          </h5>
+          <div class="comment-meta">
+            <a href="{{ fn ('get_comment_link', comment.id ) }}">
+              <time>{{ cmt.date }}&nbsp;{{ cmt.time }}
+                <time></a>
+              </div>
+            </div>
+            <div class="comment-content card-block p-2">
+              {{comment.comment_content|wpautop}}
+            </div>
+            <footer class="reply comment-reply card-footer">{{cmt.reply_link}}</footer>
+          </div>
+          {% for cmt in comment.children %}
+            {{cmt.comment_parent}}
+            <ul class="list-unstyled comment-list">
+              {% include "comment.twig" with {
+                comment : cmt
+              } %}
+            </ul>
+          {% endfor %}
+
+        </div>
+      </article>
+
+      {% for cmt in comment.children %}
+        <ul class="list-unstyled comment-list">
+          {% include "comment-child.twig" with {comment:cmt} %}
+        </ul>
+      {% endfor %}
+    </l1>

@@ -1,0 +1,53 @@
+{% block html_head_container %}
+  {% include 'partial/html-header.twig' %}
+  {% block head %}
+  {% endblock %}
+  </head>
+{% endblock %}
+
+<body class="{{body_class}}" data-template="base.twig">
+  <a class="sr-only sr-only-focusable" href="#content">Skip to content</a>
+  <header class="header">
+
+    {% block header %}
+      {% include 'partial/header.twig' %}
+    {% endblock %}
+  </header>
+
+  <div id="content" role="main" class="content-wrapper container">
+        <section id="primary" class="content-area container col-md-12">
+          <main id="main" class="site-main" role="main">
+            {% block thememodsubheader %}
+              {% include 'partial/tm-ubheader.twig' %}
+            {% endblock %}
+
+            {% if fn('is_front_page') %}
+    					<!-- Leave this blank so there's no page title on homepage -->
+    				{% else %}
+    					{% block materheader %}
+    						{% include 'partial/materheader.twig' %}
+    					{% endblock %}
+    				{% endif %}
+            {% block content %}
+              Sorry, no content
+            {% endblock %}
+          </main>
+        </section>
+        <section id="secondary" class="{{sidebar_class}} container col-md-12 mt-4">
+        {% block sidebar %}
+        {% include 'partial/sidebar.twig' %}
+        {% endblock %}
+        </section>
+        {% block footer %}
+			   <div id="footer" class="container col-md-12 mt-3">
+				         {% include 'footer.twig' %}
+
+			   </div>
+
+		    {% endblock %}
+  </div> {# end content #}
+</body>
+<footer>
+  {{ function('wp_footer') }}
+</footer>
+</html>

@@ -1,0 +1,22 @@
+{% if menu %}
+	<ul class="navbar-nav mr-auto">
+		{% for item in menu %}
+			{% if item.children %}
+			<li class="nav-item dropdown {% if item.current or item.current_item_ancestor or item.current_item_parent %}active{%endif%}">
+				<a class="nav-link dropdown-toggle" href="{{item.get_link}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{{ item.title }}
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					{% for child in item.children %}
+						<a class="dropdown-item {% if child.current %}active{%endif%}" href="{{ child.link }}">{{ child.title }}</a>
+					{% endfor %}
+				</div>
+			</li>
+			{% else %}
+			<li class="nav-item {% if item.current or item.current_item_ancestor or item.current_item_parent %}active{%endif%}">
+				<a class="nav-link" target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+			</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+{% endif %}

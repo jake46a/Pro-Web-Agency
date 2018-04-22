@@ -1,0 +1,54 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+  <article id="post-{{ post.ID }}" class="{{post.class}}">
+    
+    <div class="card-body">
+      <div class="entry-content">
+        {{post.content}}
+      </div>
+    </div>
+    <div class="card-footer">
+      <footer class="entry-footer">
+        Posted in:
+        {% set pcats = (post.terms('category') | array()) %}
+        {%for pcat in pcats %}
+          <span class="cat-links">
+            <a href="{{ pcat.link }}" rel="category tag">
+              {{ pcat.name }}</a>
+            {{ not loop.last ? ' | ' : ''}}
+          {% endfor %}
+          <span></div>
+        </div>
+      </footer>
+    </article>
+    <div id="comments" class="comments-area">
+      {% if post.comments.count == 1 %}
+        <h2 class="comments-title mt-5">Thought on
+          {{post.title}}
+        </h2>
+      {% elseif post.comments.count >1 %}
+        <h2 class="comments-title mt-5">Thoughts on
+          {{post.title}}
+        </h2>
+      {% endif %}
+      <ul class="list-unstyled comment-list">
+        {% if post.comments %}
+          {% for cmt in post.comments %}
+            {% include "comment.twig" with {
+              comment : cmt
+            } %}
+          {% endfor %}
+        {% endif %}
+      </ul>
+      {% if post.comment_status == "closed" %}
+        <p>
+          comments for this post are closed
+        </p>
+      {% else %}
+        {% include "comment-form.twig" %}
+      {% endif %}
+    </div>
+    {# end comments#}
+  {% endblock %}

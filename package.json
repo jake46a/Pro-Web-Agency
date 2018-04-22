@@ -1,0 +1,35 @@
+{
+  "name": "pro-web-agency",
+  "version": "1.0.0",
+  "description": "wp theme bootstrap 4 timber",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "browser-sync": "^2.23.6",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.8.3",
+    "popper.js": "^1.14.3"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.1.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-concat": "^2.6.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rm": "^1.0.5",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "wp-timber-cli": "^0.4.1"
+  },
+  "author": "Jake Jacobs",
+  "license": "MIT",
+  "scripts": {
+    "test": "test"
+  }
+}

@@ -1,0 +1,26 @@
+{% extends "tease.twig" %}
+{% block content %}
+{{ loop.index is odd ? '<div class="card-deck mt-4">' : ''}}
+	  <div class="card">
+			{% if post.thumbnail %}
+			<img class="card-img-top" src="{{ post.thumbnail.src }}" alt="{{post.title}}">
+			{% else %}
+			<div class="jumbotron bg-primary text-white mb-0">
+	      <div class="row justify-content-center">
+	        <h3 class="display">{{ post.title }}</h3>
+	      </div>
+	    </div>
+			{% endif %}
+			<h4 class="card-title card-header"><a href="{{post.link}}">{{post.title}}</a></h4>
+			<div class="card-body ">
+
+
+				<div class="card-text"> <p>{{post.get_preview(50, 1, '')}}</p> </div>
+			</div>
+			<div class="card-footer">
+      	<a href="{{post.link}}" class="btn btn-primary">Read more</a>
+			</div> {# end footer #}
+  </div> {# end col #}
+{{ loop.index is even ? '</div>' : ''}}
+{{ loop.last and loop.index is odd ? '</div>' : ''}}
+{% endblock %}

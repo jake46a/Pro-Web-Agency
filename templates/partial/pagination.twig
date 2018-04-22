@@ -1,0 +1,34 @@
+{% if posts.pagination.pages is not empty %}
+<nav aria-label="Page navigation example">
+         <ul class="pagination justify-content-center">
+            {% if pagination.prev %}
+                <li class="page-item"><a class="page-link" href="{{ pagination.prev.link }}">Previous</a>
+                </li>
+            {% else %}
+                    <li class="page-item disabled"> <a class="page-link">Previous</a>
+                </li>
+            {% endif %}
+
+            {% for page in pagination.pages %}
+                {% if page.link %}
+                    <li class="page-item"><a class="page-link" href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item active"><a class="page-link">{{ page.title }}<span class="sr-only">(current)</span></a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if pagination.next %}
+                <li class="page-item"><a class="page-link" href="{{ pagination.next.link }}">
+                        Next
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"> <a class="page-link">Next</a>
+                </li>
+            {% endif %}
+
+        </ul>
+</nav>
+{% endif %}

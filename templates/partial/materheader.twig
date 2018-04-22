@@ -1,0 +1,46 @@
+
+{% block materheader %} {{cat.name}}
+<div class="card mt-2">
+  {% if post.thumbnail %}
+  <img class="card-img-top" src="{{ post.thumbnail.src }}" alt="Card image cap">
+  <div class="card-header">
+    <h1 class="card-title">{{ post.title }}</h1>
+      <div class="entry-meta">
+        <span>By</span>
+        <a href="{{post.author.path}}">
+          {{ post.author.name }}
+        </a>
+        <span>&bull;</span>
+        {{ post.date }}
+      </div>
+  </div>
+  {% else %}
+  <div class="page-header">
+    <div class="jumbotron bg-primary text-white mb-0">
+      <div class="row justify-content-center">
+        {% if 'is_archive' %}
+        <h1 class="display-4">{{ wp_title }}</h1>
+        {% else %}
+        <h1 class="display-4">{{ post.title }}</h1>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="card-header">
+    {% if fn('is_author') %}
+        {{"Written by: "}}{{wp_title}}
+      {% elseif fn('is_archive') %}
+        {{"Posted in: "}}{{wp_title}}
+    {% else %}
+    <div class="entry-meta">
+      <span>By</span>
+      <a href="{{post.author.path}}">
+        {{ post.author.name }}
+      </a>
+      <span>&bull;</span>{{" Modified on:"}}
+      {{ post.post_modified | date('F j, Y') }}
+    </div>
+    {% endif %}
+  </div>
+    {% endif %}
+  {% endblock %}
